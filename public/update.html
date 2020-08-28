@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <div class="update">
+        <form action="/api/members/updatedetails/:2" method="post">
+            <input type="hidden" name="_METHOD" value="PUT"/><!--FORM tag doesnt support PUT method. This line overrides FORM and makes the PUT request-->
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name" name="name"><br/><br/>
+            <label for="email">Email</label>
+            <input id="email" type="text" placeholder="Email" name="email"><br/><br/>
+            <input class="input" type="submit" value="UPDATE">
+        </form>
+    </div>
+</body>
+</html>

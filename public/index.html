@@ -10,9 +10,23 @@
             color: burlywood;
             font-family:lazy;
         }
+        .input{
+            display:block;
+            margin:0 auto;
+            position: relative;
+        }
     </style>
 </head>
 <body>
     <h2>learning is fun! Let's have fun</h2>
+    <div class="registration">
+        <form action="/api/members/register" method="POST">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Name" name="name" required><br/><br/>
+            <label for="email">Email</label>
+            <input id="email" type="text" placeholder="Email" name="email" required><br/><br/>
+            <input class="input" type="submit" value="REGISTER"><br><br>
+        </form>
+    </div>
 </body>
 </html>

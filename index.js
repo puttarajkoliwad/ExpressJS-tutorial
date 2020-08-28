@@ -1,16 +1,40 @@
 const members = require('./members');
 const logger = require('./middlewares/logger');
+const path=require('path');
 
 //Import express module using require()
 const express= require('express');
-
-const path=require('path');
 
 //Instantiate express server using 'express()'
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-/*Root middleware
+//Express-Handlebars: These are used to render the REQUEST/RESPONSE objects easily instead of using APIs/"HTTP request middlewares".
+/*
+In order to use handlebars, we need to 
+1) Install "express-handlebars" package
+2) import(require) express-handlebars
+3) Load the "handlebars" engine middleware and set its defaultLayout to "main" and
+4) Finally Set the engine to "handlebars"
+For more details read npm documentation... 
+*/
+
+//3 Import express-handlebars
+const exphbs = require("express-handlebars");
+
+//4 Load "handlebars" engine
+app.engine("handlebars",exphbs({defaultLayout:"main"}));
+
+//5 Set the engine to "handlebars"
+app.set("view engine", "handlebars");
+
+//Using handlebars
+//Root middleware using "handlebars"
+app.get("/",(req, res)=>res.render("index",{title:"I'm On!",members}));/*render() is a 'handlebars' functionality and "index" here refers 
+to "index.handlebars" file in "views" folder which is managed by 'handlebars'. */
+
+
+/*Root middleware Using "Static HTML" pages
 If we do this way, we will have to create middleware for every route. A simple solution would be making 
 the folder static, to load and serve static files. This allows us to create as many static html files and access them directly.
 app.get('/',(req, res)=>{

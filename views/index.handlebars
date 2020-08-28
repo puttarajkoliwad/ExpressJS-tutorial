@@ -1,0 +1,25 @@
+<h2 class="text-center mb-3">{{title}}</h2> 
+{{!--In handlebars, variable calls are made in "{{}}". {{title}} here refers to the variable 'title' 
+passed as 2nd argument in GET route defined for root(/) in "index.js" by 'handlebars'. The variable holds the respective 
+value passed.--}}
+
+<form action="/api/members/register", method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control">
+    </div>
+    <input type="submit" value="ADD MEMBER" class="btn btn-primary btn-block">
+</form><br><br>
+
+<h5>Members</h5>
+<ul class="list-group">
+    {{#each members}}
+        <li class="list-group-item">{{this.name}} : {{this.email}}</li>
+    {{/each}} 
+</ul>
+
+<a href="/api/members" class="btn btn-light mt-4">ALL MEMBERS</a>
